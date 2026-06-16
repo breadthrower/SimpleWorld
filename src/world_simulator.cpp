@@ -20,4 +20,14 @@ void world_simulator::update(float dt) {
   }
 }
 
+float world_simulator::get_total_energy() {
+  float energy = 0;
+  std::lock_guard guard(bodies_mutex);
+  for (body& b : bodies) {
+    energy += b.get_mass() * (.5 * b.get_velocity().length_squared() +
+                              (sim_height - b.get_position().y) * gravity);
+  }
+  return energy;
+}
+
 }  // namespace simpleworld

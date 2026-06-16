@@ -19,8 +19,8 @@ int main() {
   world_simulator sim(sim_width, sim_height);
 
   run_sim = true;
-  float sim_freq = 1000;
-  float sim_step = 1 / sim_freq;
+  float sim_freq = 1000;          // steps per second
+  float sim_step = 1 / sim_freq;  // seconds per step
   std::thread sim_thread([&sim, &run_sim, sim_step]() {
     while (run_sim) {
       sim.update(sim_step);

@@ -22,6 +22,7 @@ struct vector2d {
   vector2d operator/(float factor) { return {x / factor, y / factor}; }
 
   float length() { return std::sqrt(x * x + y * y); }
+  float length_squared() { return (x * x + y * y); }
 };
 
 }  // namespace simpleworld

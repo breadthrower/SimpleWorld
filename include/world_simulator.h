@@ -17,6 +17,8 @@ class world_simulator {
   std::mutex& get_bodies_mutex() { return bodies_mutex; }
   void update(float dt);
 
+  float get_total_energy();
+
  private:
   std::mutex bodies_mutex;
   std::vector<body> bodies;

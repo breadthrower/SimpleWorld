@@ -6,7 +6,12 @@ render_engine::render_engine(world_simulator* sim)
     : _sim(sim),
       _window(sf::VideoMode({static_cast<unsigned int>(sim->get_width()),
                              static_cast<unsigned int>(sim->get_height())}),
-              "SimpleWorld") {}
+              "SimpleWorld"),
+      _font("Roboto-VariableFont_wdth,wght.ttf"),
+      _totalEnergyText(_font) {
+  _totalEnergyText.setCharacterSize(24);
+  _totalEnergyText.setStyle(sf::Text::Bold | sf::Text::Underlined);
+}
 
 void render_engine::run() {
   while (_window.isOpen()) {
@@ -74,6 +79,13 @@ void render_engine::run() {
         _window.draw(shape);
       }
     }
+
+    std::stringstream ss;
+    ss << "Total Energy: " << _sim->get_total_energy();
+    _totalEnergyText.setString(ss.str());
+
+    _window.draw(_totalEnergyText);
+
     _window.display();
   }
 }

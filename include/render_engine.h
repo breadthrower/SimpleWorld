@@ -20,6 +20,8 @@ class render_engine {
 
  private:
   sf::RenderWindow _window;
+  sf::Font _font;
+  sf::Text _totalEnergyText;
   world_simulator* _sim;
   sf::Vector2i _mousePressedPos;
   sf::Vector2i _mouseMovedPos;
