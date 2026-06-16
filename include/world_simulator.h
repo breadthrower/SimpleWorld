@@ -10,6 +10,8 @@ namespace simpleworld {
 class world_simulator {
  public:
   world_simulator(float width, float height) : width(width), height(height) {};
+  float get_width() const { return width; }
+  float get_height() const { return height; }
   void add_body(body&& new_body) { bodies.push_back(std::move(new_body)); }
   std::vector<body>& get_bodies() { return bodies; }
   std::mutex& get_bodies_mutex() { return bodies_mutex; }

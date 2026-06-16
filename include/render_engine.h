@@ -1,5 +1,7 @@
 #pragma once
 
+#include "world_simulator.h"
+
 #include <SFML/Graphics.hpp>
 
 #include <functional>
@@ -8,7 +10,7 @@ namespace simpleworld {
 
 class render_engine {
  public:
-  render_engine(float width, float height);
+  render_engine(world_simulator* sim);
   void run();
 
   void register_creation(
@@ -18,11 +20,11 @@ class render_engine {
 
  private:
   sf::RenderWindow _window;
-  std::vector<std::unique_ptr<sf::Shape>> _shapes;
+  world_simulator* _sim;
   sf::Vector2i _mousePressedPos;
   sf::Vector2i _mouseMovedPos;
   bool _leftButtonPressed = false;
 
   std::function<void(float, float, float)> _creationCallback;
-}
+};
 }  // namespace simpleworld

@@ -12,7 +12,7 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(main src/main.cpp src/body.cpp src/vector2d.cpp src/world_simulator.cpp)
+add_executable(main src/main.cpp src/body.cpp src/vector2d.cpp src/world_simulator.cpp src/render_engine.cpp)
 target_include_directories(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics)
